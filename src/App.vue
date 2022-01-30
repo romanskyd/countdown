@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-   <Counter />
+    <LangSwitcher />
+    <Counter />
   </div>
 </template>
 
 <script>
 
-import Counter from '@/components/Counter.vue'
+import LangSwitcher from '@/components/LangSwitcher'
+import Counter from '@/components/Counter'
 
 export default {
   name: 'App',
   components: {
+    LangSwitcher,
     Counter
   }
 }

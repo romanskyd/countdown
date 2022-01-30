@@ -1,0 +1,20 @@
+{
+  "en": {
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
+  },
+  "ru": {
+    "days": "дней",
+    "hours": "часов",
+    "minutes": "минут",
+    "seconds": "секунд"
+  },
+  "de": {
+    "days": "tage",
+    "hours": "stunden",
+    "minutes": "minuten",
+    "seconds": "sekunden"
+  }
+}

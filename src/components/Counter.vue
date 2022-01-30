@@ -3,30 +3,29 @@
     <div class="countdown__body">
       <template v-if="!hideDays">
         <div class="countdown__item">
-          <div class="countdown__description">Days</div>
+          <div class="countdown__description">{{$t('days')}}</div>
           <div class="countdown__value">{{days}}</div>
         </div>
         <div class="countdown__divider">:</div>
       </template>
       <template v-if="!hideHours">
         <div class="countdown__item">
-          <div class="countdown__description">Hours</div>
+          <div class="countdown__description">{{$t('hours')}}</div>
           <div class="countdown__value">{{addZero(hours)}}</div>
         </div>
         <div class="countdown__divider">:</div>
       </template>
       <template v-if="!hideMinutes">
         <div class="countdown__item">
-          <div class="countdown__description">Minutes</div>
+          <div class="countdown__description">{{$t('minutes')}}</div>
           <div class="countdown__value">{{addZero(minutes)}}</div>
         </div>
         <div class="countdown__divider">:</div>
       </template>
       <div class="countdown__item">
-        <div class="countdown__description">Seconds</div>
+        <div class="countdown__description">{{$t('seconds')}}</div>
         <div class="countdown__value" :class="{ 'pulse': hideMinutes && seconds <= 10  }">{{addZero(seconds)}}</div>
       </div>
-
     </div>
   </section>
 </template>
