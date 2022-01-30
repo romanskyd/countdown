@@ -1,6 +1,11 @@
 <template>
   <section class="countdown" v-if="isStarted">
-    <div class="countdown__body">
+    <div class="countdown__body" v-if="isShowCongratulations">
+      <div class="countdown__congratulations">
+        {{$t('happy_new_year')}}
+      </div>
+    </div>
+    <div class="countdown__body" v-else>
       <template v-if="!hideDays">
         <div class="countdown__item">
           <div class="countdown__description">{{$t('days')}}</div>
@@ -24,7 +29,7 @@
       </template>
       <div class="countdown__item">
         <div class="countdown__description">{{$t('seconds')}}</div>
-        <div class="countdown__value" :class="{ 'pulse': hideMinutes && seconds <= 10  }">{{addZero(seconds)}}</div>
+        <div class="countdown__value" :class="{ 'pulse': isShowPulse }">{{isShowPulse ? seconds : addZero(seconds)}}</div>
       </div>
     </div>
   </section>
@@ -40,12 +45,14 @@ export default {
       hours: 0,
       minutes: 0,
       seconds: 0,
-      isStarted: false
+      isStarted: false,
+      isShowCongratulations: false,
+      currentYear: ''
     }
   },
   computed: {
     nextNewYear() {
-      return this.$moment(`${this.$moment().year() + 1}-01-01T00:00:00`)
+      return this.$moment(`${this.currentYear + 1}-01-01T00:00:00`)
     },
     hideDays() {
       return this.days === 0
@@ -55,14 +62,30 @@ export default {
     },
     hideMinutes() {
       return this.hideHours && this.minutes === 0
+    },
+    isHappyNewYear() {
+      return this.hideDays && this.hideHours && this.hideMinutes && this.seconds === 0
+    },
+    isShowPulse() {
+      return this.hideMinutes && this.seconds <= 10
     }
   },
   mounted() {
+    this.currentYear = this.$moment().year()
     setInterval( () => {
       this.tick()
     }, 1000 )
   },
-
+  watch: {
+    isHappyNewYear: function(value) {
+      if(value) {
+        this.startCongratulations()
+        setTimeout(() => {
+          this.currentYear = this.$moment().year()
+        }, 1000)
+      }
+    }
+  },
   methods: {
     tick() {
       const diff = this.nextNewYear.diff(this.$moment(), 'milliseconds')
@@ -78,6 +101,12 @@ export default {
     },
     prepareToZero(value) {
       return value >= 0 ? value : 0
+    },
+    startCongratulations() {
+      this.isShowCongratulations = true
+      setTimeout(() => {
+        this.isShowCongratulations = false
+      }, 20000000)
     }
   }
 }
@@ -142,6 +171,10 @@ export default {
     color: #676767;
     letter-spacing: 0.04em;
   }
+  &__congratulations {
+    font-size: 8vw;
+    text-align: center;
+  }
 }
 
 .pulse {
@@ -155,5 +188,4 @@ export default {
     50% {opacity: 1.0;}
     100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
 }
-
 </style>

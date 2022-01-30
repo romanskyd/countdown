@@ -3,18 +3,21 @@
     "days": "days",
     "hours": "hours",
     "minutes": "minutes",
-    "seconds": "seconds"
+    "seconds": "seconds",
+    "happy_new_year": "Happy new year!"
   },
   "ru": {
     "days": "дней",
     "hours": "часов",
     "minutes": "минут",
-    "seconds": "секунд"
+    "seconds": "секунд",
+    "happy_new_year": "С новым годом!"
   },
   "de": {
     "days": "tage",
     "hours": "stunden",
     "minutes": "minuten",
-    "seconds": "sekunden"
+    "seconds": "sekunden",
+    "happy_new_year": "Frohes neues Jahr!"
   }
 }
