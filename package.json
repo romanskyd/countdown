@@ -2,9 +2,11 @@
   "name": "New-year-countdown",
   "version": "0.1.0",
   "private": true,
+  "homepage": "romanskyd.github.io/countdown",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "gh-pages -d dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^5.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
